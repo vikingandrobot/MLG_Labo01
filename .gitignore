@@ -1,3 +1,6 @@
 .DS_Store
-lab01
+lab01/data
+lab01/.*
+lab01/MLG_Lab1.html
+lab01/MLG_Lab1.ipynb
 MLG_PW1.pdf
