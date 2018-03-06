@@ -1,0 +1,110 @@
+\documentclass[11pt, french]{article}
+
+
+\usepackage{geometry}
+\geometry{
+	paper=a4paper,
+	inner=2.5cm, % Inner margin
+	outer=2.5cm, % Outer margin
+	top=1.5cm, % Top margin
+	bottom=1.5cm, % Bottom margin
+	%showframe, 
+}
+
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Font
+\usepackage{kpfonts}
+
+% Language
+\usepackage[french]{babel}
+
+% For Syntax Highlighting
+\usepackage{listings}
+
+% Color
+\usepackage[rgb, dvipsnames]{xcolor}
+
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+\definecolor{myLightGray}{rgb}{0.9,0.9,0.9}
+
+% Python Highlighting
+\lstset{language=Python,
+	backgroundcolor = \color{myLightGray},
+	tabsize=2,
+	numbers=left,
+	xleftmargin=2em,
+	frame=single,
+	framesep=1em,
+	framexleftmargin=1.5em,
+	basicstyle=\ttfamily\small, 
+	keywordstyle=\color{keywords},
+	commentstyle=\color{comments},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	identifierstyle=\color{green}}
+
+
+% Translate
+\usepackage[frenchb]{translator}
+
+
+\title{Travail pratique 01 - Introduction aux librairies et notebooks Python}
+\date{2018}
+\author{Mathieu Monteverde, Sathiya Kirushnapillai}
+
+\begin{document}
+
+\maketitle
+
+% Paragraph formatting
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+
+\section*{Questions - Réponses}
+
+\subsection*{Concernant la base de données wine, en observant les boîtes à moustache générées à la section 6 du travail, quel(s) composant(s) semblent le plus distinct? Pourquoi?}
+
+Il est difficile de désigner un trait de vin pour lequel les classes sont absolument distinctes. Une boîte à moustache permet de visualiser, pour une distribution de valeurs donnée, si une valeur peut être considérée comme aberrante ou non (respectivement en dehors ou en dedans des deux moustaches). Le cas idéal que l'on rechercherait serait donc un trait de vin pour lequel les moustaches des boîtes à moustaches de chaque classe forment des plages qui ne se chevauchent pas.
+
+Il est évident que nous n'avons pas trouvé un tel trait, nous allons donc considérer les traits dont les boîtes de la boîte à moustache ne se chevauchent pas (ou peu).
+
+On peut donc retenir par exemple les traits de vin suivants comme relativement distincts entre les différentes classes :
+
+\begin{itemize}
+	\item Flavanoids
+	\item Proline
+	\item Color intensity
+\end{itemize}
+
+\subsection*{Pouvez-vous estimer la performance de la méthode de classification (Single-rule) comme celle présentée à la section 7?}
+
+
+\subsection*{Définissez une règle qui utilise le composant le plus distinct pour classer les observations de vin.}
+
+\begin{lstlisting}[language=Python]
+pred = []
+
+for row in df['flavanoids']:
+	if row >= 2.5:
+		pred.append(1);
+	elif row > 1.8 and row < 2.5 :
+		pred.append(2);    
+	else:
+		pred.append(3)
+
+# A new column is added to the dataframe
+df['prediction'] = pred
+\end{lstlisting}	
+
+\subsection*{lol}
+
+\subsection*{lol}
+
+\end{document}
